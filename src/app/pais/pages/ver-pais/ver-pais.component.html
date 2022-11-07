@@ -1,0 +1,52 @@
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais: <small>{{pais.name.common}}</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img [src]="pais.flags.png" class="img-thumbnail">
+        </div>
+        <div class="col">
+            <h3>Informacion</h3>
+            <ul class="list-group mt-1">
+                <li class="list-group-item">
+                    <strong>Poblacion:</strong> {{pais.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Area:</strong> {{pais.area | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Codigo numerico:</strong> {{pais.ccn3}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Continente:</strong> {{pais.continents}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Moneda:</strong> {{pais.currencies | json}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div class="col">
+            <h3>Traducciones</h3>
+            <span class="badge bg-primary mt-1">Arabe: {{pais.translations!['ara'].common  | json}}</span>
+            <span class="badge bg-primary mt-1">Aleman: {{pais.translations!['deu'].common  | json}}</span>
+            <span class="badge bg-primary mt-1">Frances: {{pais.translations!['fra'].common  | json}}</span>
+            <span class="badge bg-primary mt-1">Italiano: {{pais.translations!['ita'].common  | json}}</span>
+            <span class="badge bg-primary mt-1">Japones: {{pais.translations!['jpn'].common  | json}}</span>
+            <span class="badge bg-primary mt-1">Ruso: {{pais.translations!['rus'].common  | json}}</span>
+        </div>
+    </div>
+
+    <pre class="code">
+        <kbd>{{pais | json}}</kbd>
+    </pre>
+</ng-template>
